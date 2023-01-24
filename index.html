@@ -12,7 +12,7 @@
         --highlight-text: #fff;
 
         --base-font-size: 18px;
-        --icon-size: 14px;
+        --icon-size: 15px;
       }
 
       * {
@@ -96,20 +96,27 @@
           this.shadow.innerHTML = `
             <style>
               span {
+                background-color: rgba(255, 255, 255, 0);
                 color: var(--highlight-text);
                 display: inline-block;
                 font-weight: bold;
                 white-space: nowrap;
-                padding: 2px 4px;
+                padding: 4px 4px;
                 border-radius: 2px;
+                line-height: 16px;
 
-                transition: transform 0.1s ease-out;
+                transform-origin: left top;
+                box-shadow: 0px 5px 17px 2px rgba(0,0,0,0);
+                transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+
               }
               span:hover {
-                background-color: rgba(255, 255, 255, 0.9);
-                color: black;
+                background-color: rgba(255, 255, 255, 0.8);
+                color: rgba(0, 0, 0, 0.8);
                 cursor: crosshair;
                 transform: scale(1.1);
+                background-filter: invert(100%);
+                box-shadow:0px 2px 5px 3px rgba(0,0,0,0.31);
               }
             </style>
             <span><slot></slot></span>`
@@ -144,7 +151,7 @@
                 vertical-align: middle;
                 line-height: 10px;
                 position: relative;
-                top: 0;
+                top: -2px;
               }
 
               .icon svg {
@@ -153,7 +160,7 @@
               }
             </style>`
 
-          let body = ''
+          let body = ""
           switch (this.type) {
             case "none":
               body = ``
@@ -226,8 +233,42 @@
                     ></path>
                   </svg>`
               break
-              case 'magnify':
-                body = `
+            case "house":
+              body = `
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.07926 0.222253C7.31275 -0.007434 7.6873 -0.007434 7.92079 0.222253L14.6708 6.86227C14.907 7.09465 14.9101 7.47453 14.6778 7.71076C14.4454 7.947 14.0655 7.95012 13.8293 7.71773L13 6.90201V12.5C13 12.7761 12.7762 13 12.5 13H2.50002C2.22388 13 2.00002 12.7761 2.00002 12.5V6.90201L1.17079 7.71773C0.934558 7.95012 0.554672 7.947 0.32229 7.71076C0.0899079 7.47453 0.0930283 7.09465 0.32926 6.86227L7.07926 0.222253ZM7.50002 1.49163L12 5.91831V12H10V8.49999C10 8.22385 9.77617 7.99999 9.50002 7.99999H6.50002C6.22388 7.99999 6.00002 8.22385 6.00002 8.49999V12H3.00002V5.91831L7.50002 1.49163ZM7.00002 12H9.00002V8.99999H7.00002V12Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>`
+              break
+            case "pin":
+              body = `
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 3.5C6 2.67157 6.67157 2 7.5 2C8.32843 2 9 2.67157 9 3.5C9 4.32843 8.32843 5 7.5 5C6.67157 5 6 4.32843 6 3.5ZM8 5.94999C9.14112 5.71836 10 4.70948 10 3.5C10 2.11929 8.88071 1 7.5 1C6.11929 1 5 2.11929 5 3.5C5 4.70948 5.85888 5.71836 7 5.94999V13.5C7 13.7761 7.22386 14 7.5 14C7.77614 14 8 13.7761 8 13.5V5.94999Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>`
+              break
+            case "magnify":
+              body = `
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 `
           }
@@ -282,43 +323,14 @@
       </div>
       <div class="panel">
         <p>
-          <span class="highlight">
-            <span class="icon">
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 15 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.07926 0.222253C7.31275 -0.007434 7.6873 -0.007434 7.92079 0.222253L14.6708 6.86227C14.907 7.09465 14.9101 7.47453 14.6778 7.71076C14.4454 7.947 14.0655 7.95012 13.8293 7.71773L13 6.90201V12.5C13 12.7761 12.7762 13 12.5 13H2.50002C2.22388 13 2.00002 12.7761 2.00002 12.5V6.90201L1.17079 7.71773C0.934558 7.95012 0.554672 7.947 0.32229 7.71076C0.0899079 7.47453 0.0930283 7.09465 0.32926 6.86227L7.07926 0.222253ZM7.50002 1.49163L12 5.91831V12H10V8.49999C10 8.22385 9.77617 7.99999 9.50002 7.99999H6.50002C6.22388 7.99999 6.00002 8.22385 6.00002 8.49999V12H3.00002V5.91831L7.50002 1.49163ZM7.00002 12H9.00002V8.99999H7.00002V12Z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </span>
+          <span>
+            <bf-icon type="house"></bf-icon>
+            living in
+            <bf-highlight>
+              <bf-icon type="pin"></bf-icon>
+              Brisbane, Australia
+            </bf-highlight>
           </span>
-          Located in
-          <span class="highlight"
-            ><span class="icon"
-              ><svg
-                width="15"
-                height="15"
-                viewBox="0 0 15 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6 3.5C6 2.67157 6.67157 2 7.5 2C8.32843 2 9 2.67157 9 3.5C9 4.32843 8.32843 5 7.5 5C6.67157 5 6 4.32843 6 3.5ZM8 5.94999C9.14112 5.71836 10 4.70948 10 3.5C10 2.11929 8.88071 1 7.5 1C6.11929 1 5 2.11929 5 3.5C5 4.70948 5.85888 5.71836 7 5.94999V13.5C7 13.7761 7.22386 14 7.5 14C7.77614 14 8 13.7761 8 13.5V5.94999Z"
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                ></path></svg
-            ></span>
-            Brisbane, Australia</span
-          >
         </p>
       </div>
       <div class="panel">
