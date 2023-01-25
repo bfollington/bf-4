@@ -32,7 +32,7 @@ float map(in vec3 st) {
     st.xy *= move(t * (0.2 + 0.2 * alpha));
     st.xz *= move(t * (0.2 + 0.2 * beta));
     vec3 p = st * (.2*sin(t / 10. * alpha) + 8. + 3.*beta) * 2.0 + t;
-    return length(st + vec3(sin(cos(t * 0.5 * gamma)))) + sin(p.x + sin(cos(p.y)* temper(iMouse.x + iGyro.x) + cos(p.z)*gamma* temper(iMouse.y + iGyro.z))) * 0.5 - 2.0;
+    return length(st + vec3(sin(cos(t * 0.5 * gamma)))) + sin(p.x + sin(cos(p.y)* temper(iMouse.x + iGyro.x) + cos(p.z)*gamma* temper(iMouse.y + iGyro.y))) * 0.5 - 2.0;
 }
 
 float vignette(vec2 uv) {
