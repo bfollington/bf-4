@@ -76,7 +76,7 @@ vec3 blur9(vec2 p, vec2 resolution, vec2 direction) {
 
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {    
-    vec3 col = blur9(fragCoord.xy - iMouse.xy * 32. - iGyro.xy * 32., iResolution.xy, vec2(255., 255.));
+    vec3 col = blur9(fragCoord.xy - iMouse.xy * 32. - iGyro.xy * 64., iResolution.xy, vec2(255., 255.));
     fragColor = vec4(col,1.0);
     
     vec2 uv = .5*(fragCoord.xy / iResolution.xy) + 0.5;
