@@ -110,6 +110,16 @@
         window._shaderParams.gyroX = e.accelerationIncludingGravity.x
       })
 
+      document.addEventListener('DOMContentLoaded', e => {
+        document.querySelector('#motion').addEventListener('click', e => {
+          if (!DeviceMotionEvent.requestPermission) {
+            console.warn("no motion")
+            return
+          }
+          DeviceMotionEvent.requestPermission()
+        })
+      })
+
       // define custom elements
       class Highlight extends HTMLElement {
         render() {
@@ -407,6 +417,7 @@
           <li>experience design</li>
         </ul>
       </div>
+    <button type="button" id="motion">enable device motion</button>
     </div>
     <script src="background.js"></script>
   </body>

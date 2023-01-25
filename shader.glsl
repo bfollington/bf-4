@@ -1,7 +1,7 @@
 precision mediump float;
 varying vec2 a_pos;
 uniform float iTime;
-uniform vec2 iGyro;
+uniform vec3 iGyro;
 uniform vec2 iMouse;
 uniform vec2 iResolution;
 uniform float iAlpha;
@@ -16,7 +16,7 @@ uniform float iGamma;
 #define beta iBeta
 #define gamma iGamma
 
-#define t (iTime / 5. + 5.)
+#define t (iTime / 5. + 2.*alpha + 3.)
 
 mat2 move(in float a) {
     float c = cos(a);
@@ -54,7 +54,7 @@ vec3 pixel(vec2 p) {
         vec3 st = vec3(0.0, 0.0, beta) + normalize(vec3(st, -1.0)) * dist;
         float rz = map(st);
         float f = clamp((rz - map(st + 0.1)) * 0.5, -0.5, 1.0);
-        vec3 l = vec3(gamma*alpha, alpha*beta, beta*gamma) + vec3(2.+2.*sin(iTime), 2.5, 2.5) * f;
+        vec3 l = vec3(gamma*alpha, alpha*beta, beta*gamma) + vec3(3.+1.*sin(iTime / 5.), 2.5, 2.5) * f;
         col = col * l + smoothstep(5.0, 2.0, rz) * 0.4 * l;
         dist += min(rz, t);
     }
