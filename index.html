@@ -104,10 +104,10 @@
         window._shaderParams.mouseY = e.clientY / window.innerHeight
       })
 
-      addEventListener('devicemotion', e => {
-        window._shaderParams.gyroZ = e.accelerationIncludingGravity.z
-        window._shaderParams.gyroY = e.accelerationIncludingGravity.y
-        window._shaderParams.gyroX = e.accelerationIncludingGravity.x
+      addEventListener('deviceorientation', e => {
+        window._shaderParams.gyroZ = e.alpha / 360.
+        window._shaderParams.gyroY = e.beta / 180.0
+        window._shaderParams.gyroX = e.gamma / 90.0
       })
 
       document.addEventListener('DOMContentLoaded', e => {
