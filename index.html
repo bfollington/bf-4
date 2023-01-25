@@ -61,6 +61,24 @@
         -webkit-backdrop-filter: blur(10px);
         max-width: 450px;
         box-sizing: border-box;
+
+        animation: fadeIn .1s ease-out both;
+      }
+
+      .panel:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .panel:nth-child(2) {
+        animation-delay: 0.125s;
+      }
+
+      .panel:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+
+      .panel:nth-child(4) {
+        animation-delay: 0.175s;
       }
 
       @media screen and (max-width: 600px) {
@@ -88,6 +106,17 @@
       .thoughts li:last-child::after {
         content: "";
         margin-left: 0;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translate3d(0, -12px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
       }
     </style>
     <script type="text/javascript">
