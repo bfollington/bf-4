@@ -95,14 +95,8 @@ fetch("shader.glsl")
     const gammaLoc = gl.getUniformLocation(prog, "iGamma")
     const timeLoc = gl.getUniformLocation(prog, "iTime")
     const mouseLoc = gl.getUniformLocation(prog, "iMouse")
+    const gyroLoc = gl.getUniformLocation(prog, "iGyro")
     const resolutionLoc = gl.getUniformLocation(prog, "iResolution")
-    let mouseX = 0
-    let mouseY = 0
-
-    canvas.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX / canvas.width
-      mouseY = 1.0 - e.clientY / canvas.height
-    })
 
     const frame = (t) => {
       gl.uniform1f(alphaLoc, alpha)
@@ -110,7 +104,13 @@ fetch("shader.glsl")
       gl.uniform1f(gammaLoc, gamma)
 
       gl.uniform1f(timeLoc, t / 1000)
-      gl.uniform2f(mouseLoc, mouseX, mouseY)
+      gl.uniform2f(mouseLoc, window._shaderParams.mouseX, window._shaderParams.mouseY)
+      gl.uniform3f(
+        gyroLoc,
+        window._shaderParams.gyroX,
+        window._shaderParams.gyroY,
+        window._shaderParams.gyroZ
+      )
       gl.uniform2f(resolutionLoc, canvas.width, canvas.height)
       gl.clear(gl.COLOR_BUFFER_BIT)
       gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0)
