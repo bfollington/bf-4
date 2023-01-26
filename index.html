@@ -21,6 +21,9 @@
         --header-font-size: 16px;
         --icon-size: 18px;
         --max-width: 450px;
+
+        --base-animation-delay: 0.15s;
+        --animation-spacing: 0.025s;
       }
 
       * {
@@ -70,7 +73,6 @@
         max-width: var(--max-width);
         box-sizing: border-box;
 
-        animation: fadeIn .1s ease-out both;
       }
 
       .panel.small {
@@ -78,20 +80,88 @@
         padding: var(--spacing-0);
       }
 
-      .panel:nth-child(1) {
-        animation-delay: 0.15s;
+      .fade-in {
+        animation: fadeIn .1s ease-out both;
       }
 
-      .panel:nth-child(2) {
-        animation-delay: 0.175s;
+      .fade-in:nth-child(1) {
+        animation-delay: calc(var(--base-animation-delay));
       }
 
-      .panel:nth-child(3) {
-        animation-delay: 0.2s;
+      .fade-in:nth-child(2) {
+        animation-delay: calc(var(--base-animation-delay) + var(--animation-spacing));
       }
 
-      .panel:nth-child(4) {
-        animation-delay: 0.225s;
+      .fade-in:nth-child(3) {
+        animation-delay: calc(var(--base-animation-delay) + 2*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(4) {
+        animation-delay: calc(var(--base-animation-delay) + 3*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(5) {
+        animation-delay: calc(var(--base-animation-delay) + 4*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(6) {
+        animation-delay: calc(var(--base-animation-delay) + 5*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(7) {
+        animation-delay: calc(var(--base-animation-delay) + 6*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(8) {
+        animation-delay: calc(var(--base-animation-delay) + 7*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(9) {
+        animation-delay: calc(var(--base-animation-delay) + 8*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(10) {
+        animation-delay: calc(var(--base-animation-delay) + 9*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(11) {
+        animation-delay: calc(var(--base-animation-delay) + 10*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(12) {
+        animation-delay: calc(var(--base-animation-delay) + 11*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(13) {
+        animation-delay: calc(var(--base-animation-delay) + 12*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(14) {
+        animation-delay: calc(var(--base-animation-delay) + 13*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(15) {
+        animation-delay: calc(var(--base-animation-delay) + 14*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(16) {
+        animation-delay: calc(var(--base-animation-delay) + 15*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(17) {
+        animation-delay: calc(var(--base-animation-delay) + 16*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(18) {
+        animation-delay: calc(var(--base-animation-delay) + 17*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(19) {
+        animation-delay: calc(var(--base-animation-delay) + 18*var(--animation-spacing));
+      }
+
+      .fade-in:nth-child(20) {
+        animation-delay: calc(var(--base-animation-delay) + 19*var(--animation-spacing));
       }
 
       @media screen and (max-width: 600px) {
@@ -411,7 +481,7 @@
       <canvas id="shader"></canvas>
     </div>
     <div class="content">
-      <div class="panel">
+      <div class="panel fade-in">
         <p>
           <bf-highlight>
             <bf-icon type="person"></bf-icon>
@@ -433,7 +503,7 @@
           >
         </p>
       </div>
-      <div class="panel full-width">
+      <div class="panel fade-in full-width">
         <p>
           <span>
             <bf-icon type="house"></bf-icon>
@@ -445,8 +515,8 @@
           </span>
         </p>
       </div>
-      <h1 class="heading">Now</h1>
-      <div class="two-column">
+      <h1 class="heading fade-in">Now</h1>
+      <div class="two-column fade-in">
         <div class="panel">
           <bf-highlight>
             <bf-icon type="moon"></bf-icon>
@@ -462,7 +532,7 @@
           <span class="job-title">Lead Developer</span>
         </div>
       </div>
-      <div class="two-column">
+      <div class="two-column fade-in">
         <div class="panel small">
           <bf-highlight>
             <bf-icon type="moon"></bf-icon>
@@ -475,17 +545,17 @@
           </bf-highlight>
         </div>
       </div>
-      <h1 class="heading">Past</h1>
-        <ul class="thoughts">
+      <h1 class="heading fade-in">Past</h1>
+        <ul class="thoughts fade-in">
+          <li><bf-highlight>nats.io</bf-highlight></li>
+          <li><bf-highlight>library of economic possibility</bf-highlight></li>
           <li><bf-highlight>darkforest.eth</bf-highlight></li>
-          <li>nats.io</li>
-          <li>connect develop</li>
-          <li>locatrix</li>
-          <li>the library of economic possibility</li>
-          <li>the university of queensland</li>
+          <li><bf-highlight>connect develop</bf-highlight></li>
+          <li><bf-highlight>locatrix</bf-highlight></li>
+          <li><bf-highlight>the university of queensland</bf-highlight></li>
         </ul>
-      <h1 class="heading">Thinking About</h1>
-        <ul class="thoughts">
+      <h1 class="heading fade-in">Thinking About</h1>
+        <ul class="thoughts fade-in">
           <li>thinking about</li>
           <li>video games</li>
           <li>user interfaces</li>
@@ -495,8 +565,8 @@
           <li>mindfulness</li>
           <li>experience design</li>
         </ul>
-      <h1 class="heading">Links</h1>
-        <ul class="thoughts">
+      <h1 class="heading fade-in">Links</h1>
+        <ul class="thoughts fade-in">
           <li>twitter</li>
           <li>github</li>
           <li>are.na</li>
