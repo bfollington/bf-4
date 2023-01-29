@@ -65,14 +65,13 @@
       }
 
       .panel {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.64);
         padding: var(--spacing-1);
         border-radius: var(--roundness);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         max-width: var(--max-width);
         box-sizing: border-box;
-
       }
 
       .panel.small {
@@ -81,7 +80,7 @@
       }
 
       .fade-in {
-        animation: fadeIn .1s ease-out both;
+        animation: fadeIn 0.1s ease-out both;
       }
 
       .fade-in:nth-child(1) {
@@ -93,75 +92,75 @@
       }
 
       .fade-in:nth-child(3) {
-        animation-delay: calc(var(--base-animation-delay) + 2*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 2 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(4) {
-        animation-delay: calc(var(--base-animation-delay) + 3*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 3 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(5) {
-        animation-delay: calc(var(--base-animation-delay) + 4*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 4 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(6) {
-        animation-delay: calc(var(--base-animation-delay) + 5*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 5 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(7) {
-        animation-delay: calc(var(--base-animation-delay) + 6*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 6 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(8) {
-        animation-delay: calc(var(--base-animation-delay) + 7*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 7 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(9) {
-        animation-delay: calc(var(--base-animation-delay) + 8*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 8 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(10) {
-        animation-delay: calc(var(--base-animation-delay) + 9*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 9 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(11) {
-        animation-delay: calc(var(--base-animation-delay) + 10*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 10 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(12) {
-        animation-delay: calc(var(--base-animation-delay) + 11*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 11 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(13) {
-        animation-delay: calc(var(--base-animation-delay) + 12*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 12 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(14) {
-        animation-delay: calc(var(--base-animation-delay) + 13*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 13 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(15) {
-        animation-delay: calc(var(--base-animation-delay) + 14*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 14 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(16) {
-        animation-delay: calc(var(--base-animation-delay) + 15*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 15 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(17) {
-        animation-delay: calc(var(--base-animation-delay) + 16*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 16 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(18) {
-        animation-delay: calc(var(--base-animation-delay) + 17*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 17 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(19) {
-        animation-delay: calc(var(--base-animation-delay) + 18*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 18 * var(--animation-spacing));
       }
 
       .fade-in:nth-child(20) {
-        animation-delay: calc(var(--base-animation-delay) + 19*var(--animation-spacing));
+        animation-delay: calc(var(--base-animation-delay) + 19 * var(--animation-spacing));
       }
 
       @media screen and (max-width: 600px) {
@@ -182,10 +181,11 @@
         max-width: var(--max-width);
       }
 
-      .thoughts li {
+      .tags span {
+        font-size: var(--small-font-size);
         display: inline-block;
         margin: 0;
-        margin-right: var(--spacing-0);
+        margin-right: calc(-1*var(--spacing-2) + 4px);
         margin-bottom: var(--spacing-0);
 
         background-color: rgba(0, 0, 0, 0.5);
@@ -194,11 +194,6 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         box-sizing: border-box;
-      }
-
-      .thoughts li:last-child::after {
-        content: "";
-        margin-left: 0;
       }
 
       .two-column {
@@ -212,7 +207,7 @@
       .two-column div {
         flex: 0.5;
       }
-      
+
       .job-title {
         margin-left: var(--spacing-5);
       }
@@ -244,19 +239,19 @@
         gyroZ: 0,
       }
 
-      addEventListener('mousemove', e => {
+      addEventListener("mousemove", (e) => {
         window._shaderParams.mouseX = e.clientX / window.innerWidth
         window._shaderParams.mouseY = e.clientY / window.innerHeight
       })
 
-      addEventListener('deviceorientation', e => {
-        window._shaderParams.gyroZ = e.alpha / 360.
+      addEventListener("deviceorientation", (e) => {
+        window._shaderParams.gyroZ = e.alpha / 360
         window._shaderParams.gyroY = e.beta / 180.0
         window._shaderParams.gyroX = e.gamma / 90.0
       })
 
-      document.addEventListener('DOMContentLoaded', e => {
-        document.querySelector('#motion').addEventListener('click', e => {
+      document.addEventListener("DOMContentLoaded", (e) => {
+        document.querySelector("#motion").addEventListener("click", (e) => {
           if (!DeviceMotionEvent.requestPermission) {
             console.warn("no motion")
             return
@@ -516,23 +511,23 @@
         </p>
       </div>
       <h1 class="heading fade-in">Now</h1>
-      <div class="two-column fade-in">
+      <div class="two-column">
         <div class="panel">
           <bf-highlight>
             <bf-icon type="moon"></bf-icon>
-            Subconscious
-          </bf-highlight>
+            Subconscious </bf-highlight
+          ><br />
           <span class="job-title">App Developer</span>
         </div>
         <div class="panel">
           <bf-highlight>
             <bf-icon type="move"></bf-icon>
-            TwoPM Studios
-          </bf-highlight>
+            TwoPM Studios </bf-highlight
+          ><br />
           <span class="job-title">Lead Developer</span>
         </div>
       </div>
-      <div class="two-column fade-in">
+      <div class="two-column">
         <div class="panel small">
           <bf-highlight>
             <bf-icon type="moon"></bf-icon>
@@ -540,42 +535,39 @@
           </bf-highlight>
         </div>
         <div class="panel small">
-          <bf-highlight>
-            WizardChess
-          </bf-highlight>
+          <bf-highlight> WizardChess </bf-highlight>
         </div>
       </div>
       <h1 class="heading fade-in">Past</h1>
-        <ul class="thoughts fade-in">
-          <li><bf-highlight>nats.io</bf-highlight></li>
-          <li><bf-highlight>library of economic possibility</bf-highlight></li>
-          <li><bf-highlight>darkforest.eth</bf-highlight></li>
-          <li><bf-highlight>connect develop</bf-highlight></li>
-          <li><bf-highlight>locatrix</bf-highlight></li>
-          <li><bf-highlight>the university of queensland</bf-highlight></li>
-        </ul>
+      <div class="full-width tags">
+        <span><bf-highlight>nats.io</bf-highlight></span>
+        <span><bf-highlight>library of economic possibility</bf-highlight></span>
+        <span><bf-highlight>darkforest.eth</bf-highlight></span>
+        <span><bf-highlight>connect develop</bf-highlight></span>
+        <span><bf-highlight>locatrix</bf-highlight></span>
+        <span><bf-highlight>the university of queensland</bf-highlight></span>
+      </div>
       <h1 class="heading fade-in">Thinking About</h1>
-        <ul class="thoughts fade-in">
-          <li>thinking about</li>
-          <li>video games</li>
-          <li>user interfaces</li>
-          <li>generative art</li>
-          <li>creative computing</li>
-          <li>education</li>
-          <li>mindfulness</li>
-          <li>experience design</li>
-        </ul>
+      <div class="full-width tags">
+        <span>video games</span>
+        <span>user interfaces</span>
+        <span>generative art</span>
+        <span>creative computing</span>
+        <span>education</span>
+        <span>mindfulness</span>
+        <span>experience design</span>
+      </div>
       <h1 class="heading fade-in">Links</h1>
-        <ul class="thoughts fade-in">
-          <li>twitter</li>
-          <li>github</li>
-          <li>are.na</li>
-          <li>youtube</li>
-          <li>cv</li>
-          <li>email</li>
-          <li>substack</li>
-        </ul>
-    <button type="button" id="motion">enable device motion</button>
+      <div class="full-width tags">
+        <span>twitter</span>
+        <span>github</span>
+        <span>are.na</span>
+        <span>youtube</span>
+        <span>cv</span>
+        <span>email</span>
+        <span>substack</span>
+      </div>
+      <button type="button" id="motion">enable device motion</button>
     </div>
     <script src="background.js"></script>
   </body>
