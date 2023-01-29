@@ -80,7 +80,7 @@
       }
 
       .fade-in {
-        animation: fadeIn 0.1s ease-out both;
+        animation: fadeIn 0.1s ease-out backwards;
       }
 
       .fade-in:nth-child(1) {
@@ -196,6 +196,11 @@
         box-sizing: border-box;
       }
 
+      .tags span:hover {
+        z-index: 999;
+        position: relative;
+      }
+
       .two-column {
         display: flex;
         flex-direction: row;
@@ -303,6 +308,36 @@
         }
       }
       customElements.define("bf-highlight", Highlight)
+
+      class Link extends HTMLElement {
+        href = ""
+        target = ""
+        static get observedAttributes() {
+          return ["href", "target"]
+        }
+
+        attributeChangedCallback(property, oldValue, newValue) {
+          if (oldValue === newValue) return
+          this[property] = newValue
+        }
+
+        render() {
+          this.shadow.innerHTML = `
+            <style>
+            </style>
+            <a target="${this.target}" href="${this.href}""><bf-highlight><slot></slot></bf-highlight></a>`
+        }
+
+        constructor() {
+          super()
+          this.shadow = this.attachShadow({ mode: "open" })
+        }
+
+        connectedCallback() {
+          this.render()
+        }
+      }
+      customElements.define("bf-link", Link)
 
       class Icon extends HTMLElement {
         type = "none"
@@ -511,7 +546,7 @@
         </p>
       </div>
       <h1 class="heading fade-in">Now</h1>
-      <div class="two-column">
+      <div class="two-column fade-in">
         <div class="panel">
           <bf-highlight>
             <bf-icon type="moon"></bf-icon>
@@ -527,7 +562,7 @@
           <span class="job-title">Lead Developer</span>
         </div>
       </div>
-      <div class="two-column">
+      <div class="two-column fade-in">
         <div class="panel small">
           <bf-highlight>
             <bf-icon type="moon"></bf-icon>
@@ -539,7 +574,7 @@
         </div>
       </div>
       <h1 class="heading fade-in">Past</h1>
-      <div class="full-width tags">
+      <div class="full-width tags fade-in">
         <span><bf-highlight>nats.io</bf-highlight></span>
         <span><bf-highlight>library of economic possibility</bf-highlight></span>
         <span><bf-highlight>darkforest.eth</bf-highlight></span>
@@ -548,7 +583,7 @@
         <span><bf-highlight>the university of queensland</bf-highlight></span>
       </div>
       <h1 class="heading fade-in">Thinking About</h1>
-      <div class="full-width tags">
+      <div class="full-width tags fade-in">
         <span>video games</span>
         <span>user interfaces</span>
         <span>generative art</span>
@@ -558,14 +593,14 @@
         <span>experience design</span>
       </div>
       <h1 class="heading fade-in">Links</h1>
-      <div class="full-width tags">
-        <span>twitter</span>
-        <span>github</span>
-        <span>are.na</span>
-        <span>youtube</span>
-        <span>cv</span>
-        <span>email</span>
-        <span>substack</span>
+      <div class="full-width tags fade-in">
+        <span><bf-link target="new" href="https://twitter.com/vivavolt">twitter</bf-link></span>
+        <span><bf-link target="new" href="https://github.com/bfollington">github</bf-link></span>
+        <span><bf-link target="new" href="https://www.are.na/ben-follington">are.na</bf-link></span>
+        <span><bf-link target="new" href="https://www.youtube.com/@vivavolt/">youtube</bf-link></span>
+        <span><bf-link target="new" href="https://cv.bf.wtf/">cv</bf-link></span>
+        <span><bf-link target="new" href="mailto:work@bf.wtf">email</bf-link></span>
+        <span><bf-link target="new" href="https://shimmeringvoid.substack.com/">substack</bf-link></span>
       </div>
       <button type="button" id="motion">enable device motion</button>
     </div>
