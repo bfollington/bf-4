@@ -18,12 +18,15 @@
 
         --base-font-size: 16px;
         --small-font-size: 13px;
-        --header-font-size: 16px;
+        --header-font-size: 14px;
+        --small-header-font-size: 12px;
         --icon-size: 18px;
         --max-width: 450px;
 
         --base-animation-delay: 0.15s;
         --animation-spacing: 0.025s;
+
+        --hover-cursor: crosshair;
       }
 
       * {
@@ -181,11 +184,66 @@
         max-width: var(--max-width);
       }
 
+      .marquee-wrapper {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 24px;
+      }
+
+      .marquee {
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        animation: marquee 20s linear infinite;
+      }
+
+      .marquee-delay {
+        animation: marquee-2 20s linear infinite;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-225%);
+        }
+      }
+
+      @keyframes marquee-2 {
+        0% {
+          transform: translateX(225%);
+        }
+        100% {
+          transform: translateX(0%);
+        }
+      }
+
+      .marquee span {
+        font-size: var(--small-font-size);
+        display: inline-block;
+        margin: 0;
+        margin-right: var(--spacing-0);
+        margin-bottom: var(--spacing-0);
+
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: var(--spacing-0) var(--spacing-1);
+        border-radius: var(--roundness);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-sizing: border-box;
+      }
+
       .tags span {
         font-size: var(--small-font-size);
         display: inline-block;
         margin: 0;
-        margin-right: calc(-1*var(--spacing-2) + 4px);
+        margin-right: calc(-1 * var(--spacing-2) + 4px);
         margin-bottom: var(--spacing-0);
 
         background-color: rgba(0, 0, 0, 0.5);
@@ -219,9 +277,15 @@
 
       .heading {
         margin-top: var(--spacing-4);
-        text-shadow: 0px 2px 12px rgba(0, 0, 0, 1);
+        text-shadow: 0px 1px 5px rgba(0, 0, 0, 1);
         color: white;
         font-size: var(--header-font-size);
+      }
+
+      .heading.small {
+        margin-top: var(--spacing-1);
+        /* text-transform: uppercase; */
+        font-size: var(--small-header-font-size);
       }
 
       @keyframes fadeIn {
@@ -276,7 +340,7 @@
                 display: inline-block;
                 font-weight: bold;
                 white-space: nowrap;
-                padding: 4px 4px;
+                padding: 3px 3px;
                 border-radius: 2px;
                 line-height: 16px;
 
@@ -288,7 +352,7 @@
               span:hover {
                 background-color: rgba(255, 255, 255, 0.8);
                 color: rgba(0, 0, 0, 0.8);
-                cursor: crosshair;
+                cursor: var(--hover-cursor);
                 transform: scale(1.1);
                 background-filter: invert(100%);
                 -webkit-background-filter: invert(100%);
@@ -324,6 +388,9 @@
         render() {
           this.shadow.innerHTML = `
             <style>
+              a:hover, a span:hover {
+                --hover-cursor: pointer;
+              }
             </style>
             <a target="${this.target}" href="${this.href}""><bf-highlight><slot></slot></bf-highlight></a>`
         }
@@ -548,59 +615,141 @@
       <h1 class="heading fade-in">Now</h1>
       <div class="two-column fade-in">
         <div class="panel">
-          <bf-highlight>
+          <bf-link href="https://subconcious.network">
             <bf-icon type="moon"></bf-icon>
-            Subconscious </bf-highlight
+            Subconscious </bf-link
           ><br />
           <span class="job-title">App Developer</span>
         </div>
         <div class="panel">
-          <bf-highlight>
+          <bf-link href="https://twopm.studio">
             <bf-icon type="move"></bf-icon>
-            TwoPM Studios </bf-highlight
+            TwoPM Studios </bf-link
           ><br />
           <span class="job-title">Lead Developer</span>
         </div>
       </div>
       <div class="two-column fade-in">
         <div class="panel small">
-          <bf-highlight>
+          <bf-link href="https://shimmeringvoid.substack.com">
             <bf-icon type="moon"></bf-icon>
             shimmeringvoid
-          </bf-highlight>
+          </bf-link>
         </div>
         <div class="panel small">
-          <bf-highlight> WizardChess </bf-highlight>
+          <bf-link href="https://store.steampowered.com/app/1274210/WizardChess/"> WizardChess </bf-highlight>
         </div>
       </div>
       <h1 class="heading fade-in">Past</h1>
       <div class="full-width tags fade-in">
-        <span><bf-highlight>nats.io</bf-highlight></span>
-        <span><bf-highlight>library of economic possibility</bf-highlight></span>
-        <span><bf-highlight>darkforest.eth</bf-highlight></span>
-        <span><bf-highlight>connect develop</bf-highlight></span>
-        <span><bf-highlight>locatrix</bf-highlight></span>
-        <span><bf-highlight>the university of queensland</bf-highlight></span>
+        <span><bf-link href="http://nats.io/">nats.io</bf-highlight></span>
+        <span><bf-link href="https://www.economicpossibility.org/">library of economic possibility</bf-highlight></span>
+        <span><bf-link href="https://zkga.me/">darkforest.eth</bf-highlight></span>
+        <span><bf-link href="https://www.connectdevelop.com/">connect develop</bf-highlight></span>
+        <span><bf-link href="https://www.locatrix.com/">locatrix</bf-highlight></span>
+        <span><bf-highlight>voltic games</bf-highlight></span>
+        <span><bf-link href="https://www.uq.edu.au/">the university of queensland</bf-highlight></span>
       </div>
-      <h1 class="heading fade-in">Thinking About</h1>
-      <div class="full-width tags fade-in">
-        <span>video games</span>
-        <span>user interfaces</span>
-        <span>generative art</span>
-        <span>creative computing</span>
-        <span>education</span>
-        <span>mindfulness</span>
-        <span>experience design</span>
-      </div>
-      <h1 class="heading fade-in">Links</h1>
+      <h1 class="small heading fade-in">Links</h1>
       <div class="full-width tags fade-in">
         <span><bf-link target="new" href="https://twitter.com/vivavolt">twitter</bf-link></span>
         <span><bf-link target="new" href="https://github.com/bfollington">github</bf-link></span>
         <span><bf-link target="new" href="https://www.are.na/ben-follington">are.na</bf-link></span>
-        <span><bf-link target="new" href="https://www.youtube.com/@vivavolt/">youtube</bf-link></span>
+        <span
+          ><bf-link target="new" href="https://www.youtube.com/@vivavolt/">youtube</bf-link></span
+        >
         <span><bf-link target="new" href="https://cv.bf.wtf/">cv</bf-link></span>
         <span><bf-link target="new" href="mailto:work@bf.wtf">email</bf-link></span>
-        <span><bf-link target="new" href="https://shimmeringvoid.substack.com/">substack</bf-link></span>
+        <span
+          ><bf-link target="new" href="https://shimmeringvoid.substack.com/"
+            >substack</bf-link
+          ></span
+        >
+      </div>
+      <h1 class="heading small fade-in">Thinking About</h1>
+      <div class="full-width marquee-wrapper fade-in">
+        <div class="marquee">
+          <span>video games</span>
+          <span>user interfaces</span>
+          <span>generative art</span>
+          <span>creative computing</span>
+          <span>education</span>
+          <span>mindfulness</span>
+          <span>experience design</span>
+        </div>
+        <div class="marquee marquee-delay ">
+          <span>video games</span>
+          <span>user interfaces</span>
+          <span>generative art</span>
+          <span>creative computing</span>
+          <span>education</span>
+          <span>mindfulness</span>
+          <span>experience design</span>
+        </div>
+      </div>
+      <h1 class="small heading fade-in">Tools</h1>
+      <div class="full-width marquee-wrapper fade-in">
+        <div class="marquee">
+          <span>figma</span>
+          <span>unity3d</span>
+          <span>godot</span>
+          <span>touchdesigner</span>
+          <span>vim</span>
+          <span>git</span>
+          <span>rive</span>
+          <span>blender</span>
+          <span>aseprite</span>
+          <span>ableton</span>
+          <span>davinci resolve</span>
+        </div>
+        <div class="marquee marquee-delay ">
+          <span>figma</span>
+          <span>unity3d</span>
+          <span>godot</span>
+          <span>touchdesigner</span>
+          <span>vim</span>
+          <span>git</span>
+          <span>rive</span>
+          <span>blender</span>
+          <span>aseprite</span>
+          <span>ableton</span>
+          <span>davinci resolve</span>
+        </div>
+      </div>
+      <h1 class="small heading fade-in">Tech</h1>
+      <div class="full-width marquee-wrapper fade-in">
+        <div class="marquee">
+          <span>typescript</span>
+          <span>react</span>
+          <span>clojure</span>
+          <span>solidjs</span>
+          <span>rust</span>
+          <span>swift</span>
+          <span>svelte</span>
+          <span>Next.js</span>
+          <span>F#</span>
+          <span>C#</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>webgl</span>
+          <span>three.js</span>
+        </div>
+        <div class="marquee marquee-delay ">
+          <span>typescript</span>
+          <span>react</span>
+          <span>clojure</span>
+          <span>solidjs</span>
+          <span>rust</span>
+          <span>swift</span>
+          <span>svelte</span>
+          <span>Next.js</span>
+          <span>F#</span>
+          <span>C#</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>webgl</span>
+          <span>three.js</span>
+        </div>
       </div>
       <button type="button" id="motion">enable device motion</button>
     </div>
