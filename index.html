@@ -58,7 +58,7 @@
       }
 
       .content {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -82,7 +82,7 @@
         -webkit-backdrop-filter: blur(10px);
         box-sizing: border-box;
         background-clip: padding-box;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(128, 128, 128, 0.07);
 
         box-shadow: var(--ring-offset-shadow, 0 0 #0000), var(--ring-shadow, 0 0 #0000), var(--shadow);
         border-radius: var(--roundness);
@@ -92,6 +92,7 @@
         min-height: 128px;
         background-size: 64%;
         background-repeat: no-repeat;
+        transition: background-position 0.15s ease-out;
       }
 
       .role.subconscious {
@@ -126,7 +127,7 @@
       .panel {
         padding: var(--spacing-1);
         max-width: var(--max-width);
-        transition: transform 0.1s ease-out;
+        transition: transform 0.15s ease-out;
       }
 
       .panel:hover {
