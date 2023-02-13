@@ -436,11 +436,11 @@
                 flex-direction: row;
                 flex-wrap: nowrap;
                 white-space: nowrap;
-                animation: marquee 20s linear infinite;
+                animation: marquee 32s linear infinite;
               }
 
               .marquee-delay {
-                animation: marquee-2 20s linear infinite;
+                animation: marquee-2 32s linear infinite;
               }
 
               @keyframes marquee {
@@ -663,6 +663,8 @@
       href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;700&display=swap"
       rel="stylesheet"
     />
+    <!-- self-hosted analytics -->
+    <script async defer data-website-id="b548cc69-60e7-4439-8ede-a2fcd3338ff0" src="https://google-analytics-sucks.vercel.app/umami.js"></script>
   </head>
   <body>
     <div class="background">
@@ -675,38 +677,34 @@
             <bf-icon type="person"></bf-icon>
             Ben Follington</bf-highlight
           >
-          is a <bf-highlight><bf-icon type="mouse"></bf-icon> designer</bf-highlight>,
+          is a <bf-highlight><bf-icon type="mouse"></bf-icon> Designer</bf-highlight>,
           <bf-highlight>
             <bf-icon type="cursor"></bf-icon>
-            programmer</bf-highlight
+            Programmer</bf-highlight
           >,
           <bf-highlight>
             <bf-icon type="magnify"></bf-icon>
-            researcher</bf-highlight
+            Researcher</bf-highlight
           >
           and
           <bf-highlight>
             <bf-icon type="wand"></bf-icon>
-            artist</bf-highlight
-          >
+            Artist</bf-highlight
+          > living in 
+            <bf-highlight>
+              <bf-icon type="pin"></bf-icon>
+              Brisbane, AU
+            </bf-highlight>
         </p>
       </div>
-      <div class="panel glassy fade-in full-width">
+      <!-- <div class="panel glassy fade-in full-width">
         <p>
           <span>
             <bf-icon type="house"></bf-icon>
             living in
-            <bf-highlight>
-              <bf-icon type="pin"></bf-icon>
-              Brisbane, Australia
-            </bf-highlight>
           </span>
         </p>
-      </div>
-      <h1 class="heading fade-in">Focus</h1>
-      <bf-marquee class="full-width fade-in" items="video games,user interfaces,generative art,creative computing,education,mindfulness,psychology,consciousness"></bf-marquee>
-      <bf-marquee class="full-width fade-in" items="figma,unity3d,godot,touchdesigner,vim,git,rive,blender,aseprite,ableton,davinci resolve"></bf-marquee>
-      <bf-marquee class="full-width fade-in" items="typescript,react,clojure,solidjs,rust,swift,svelte,Next.js,F#,C#,HTML,CSS,webgl,three.js"></bf-marquee>
+      </div> -->
       <h1 class="heading fade-in">Now</h1>
       <div class="two-column fade-in">
         <div class="panel glassy">
@@ -739,6 +737,10 @@
             WizardChess </bf-highlight>
         </div>
       </div>
+      <h1 class="heading fade-in">Focus</h1>
+      <bf-marquee class="full-width fade-in" items="video games,user interfaces,generative art,creative computing,education,mindfulness,psychology,consciousness"></bf-marquee>
+      <bf-marquee class="full-width fade-in" items="figma,unity3d,godot,touchdesigner,vim,git,rive,blender,aseprite,ableton,davinci resolve"></bf-marquee>
+      <bf-marquee class="full-width fade-in" items="typescript,react,clojure,solidjs,rust,swift,svelte,Next.js,F#,C#,HTML,CSS,webgl,three.js"></bf-marquee>
       <h1 class="heading fade-in">Past</h1>
       <div class="full-width tags fade-in">
         <span class="glassy"><bf-link href="http://nats.io/">nats.io</bf-highlight></span>
