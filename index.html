@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>GLSL</title>
+    <title>Ben Follington - Designer, Programmer, Researcher, Arist (bf.wtf)</title>
     <style>
       :root {
         --spacing-0: 3px;
@@ -13,8 +13,8 @@
         --spacing-4: 24px;
         --spacing-5: 30px;
         --roundness: 4px;
-        --fg-text: #ccc;
-        --highlight-text: #fff;
+        --fg-text: #aaa;
+        --highlight-text: #efefef;
 
         --base-font-size: 16px;
         --small-font-size: 13px;
@@ -23,15 +23,15 @@
         --icon-size: 18px;
         --max-width: 450px;
 
-        --base-animation-delay: 0.15s;
+        --base-animation-delay: 0.4s;
         --animation-spacing: 0.025s;
 
         --hover-cursor: crosshair;
 
-        --tw-ring-offset-shadow: 0 0 #0000;
-        --tw-ring-shadow: 0 0 #0000;
-        --tw-shadow-color: rgba(0, 0, 0, 0.2);
-        --tw-shadow: 0px 1px 0px -1px var(--tw-shadow-color), 0px 1px 1px -1px var(--tw-shadow-color), 0px 1px 2px -1px var(--tw-shadow-color), 0px 2px 4px -2px var(--tw-shadow-color), 0px 3px 6px -3px var(--tw-shadow-color);
+        --ring-offset-shadow: 0 0 #0000;
+        --ring-shadow: 0 0 #0000;
+        --shadow-color: rgba(0, 0, 0, 0.2);
+        --shadow: 0px 1px 0px -1px var(--shadow-color), 0px 1px 1px -1px var(--shadow-color), 0px 1px 2px -1px var(--shadow-color), 0px 2px 4px -2px var(--shadow-color), 0px 3px 6px -3px var(--shadow-color);
       }
 
       * {
@@ -71,31 +71,145 @@
         padding: var(--spacing-2);
         box-sizing: border-box;
 
-        background: linear-gradient(128deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.0) 66%, rgba(0,0,0,0.0) 100%);
+        background: linear-gradient(128deg, rgba(48,48,64,0.7) 0%, rgba(64,64,64,0.4) 33%, rgba(64,64,64,0.4) 100%);
       }
 
       .glassy {
-        background: linear-gradient(rgba(24,24,24,0.64) 0%, rgba(0,0,0,0.64) 50%, rgba(0,0,0,0.5) 100%);
+        background: linear-gradient(rgba(24,32,32,0.9) 0%, rgba(0,0,0,0.64) 50%, rgba(0,0,0,0.6) 100%);
         background-position: 50% 0%;
         /* background-color: rgba(0, 0, 0, 0.64); */
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         box-sizing: border-box;
         background-clip: padding-box;
-        border: 1px solid rgba(128, 128, 128, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
 
-        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        box-shadow: var(--ring-offset-shadow, 0 0 #0000), var(--ring-shadow, 0 0 #0000), var(--shadow);
         border-radius: var(--roundness);
+      }
+
+      .role {
+        min-height: 128px;
+        background-size: 64%;
+        background-repeat: no-repeat;
+      }
+
+      .role.subconscious {
+        background-image: url("/subconscious.png");
+        background-size: 55%;
+        background-position: 125% 32px;
+      }
+
+      .role.twopm {
+        background-image: url("/twopm.png");
+        background-position: 125% 24px;
+      }
+
+      @media screen and (max-width: 600px) {
+        .role {
+          background-size: 75%;
+          background-position: 125% 50px;
+        }
+
+        .role.subconscious {
+          background-size: 64%;
+          background-position: 125% 48px;
+        }
+      }
+
+
+      .job-title {
+        /* margin-left: var(--spacing-5); */
+        font-size: var(--small-font-size);
       }
 
       .panel {
         padding: var(--spacing-1);
         max-width: var(--max-width);
+        transition: transform 0.1s ease-out;
+      }
+
+      .panel:hover {
+        transform: scale(1.025);
       }
 
       .panel.small {
         font-size: var(--small-font-size);
         padding: var(--spacing-0);
+      }
+
+
+      .thoughts {
+        display: block;
+        font-size: var(--small-font-size);
+        max-width: var(--max-width);
+      }
+
+      .full-width {
+        width: 100%;
+        max-width: var(--max-width);
+      }
+
+      .tags span {
+        font-size: var(--small-font-size);
+        display: inline-block;
+        margin: 0;
+        margin-right: calc(-1 * var(--spacing-2) + 4px);
+        margin-bottom: var(--spacing-0);
+
+        padding: var(--spacing-0);
+        border-radius: var(--roundness);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-sizing: border-box;
+      }
+
+      .tags span:hover {
+        z-index: 999;
+        position: relative;
+      }
+
+      .tags .glassy, .small.glassy {
+        background-image: none;
+        background-color: rgba(0, 0, 0, 0.32);
+      }
+
+      .two-column {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: var(--max-width);
+        gap: 6px;
+      }
+
+      .two-column div {
+        flex: 0.5;
+      }
+
+
+      .heading {
+        margin-top: var(--spacing-4);
+        text-shadow: 0px 1px 5px rgba(0, 0, 0, 1), 0px 1px 16px rgba(0, 0, 0, 0.5), 0px 1px 32px rgba(0, 0, 0, .32);
+        color: var(--highlight-text);
+        opacity: 0.75;
+        font-size: var(--small-header-font-size);
+      }
+
+      .heading.small {
+        margin-top: var(--spacing-1);
+      }
+
+      /* ANIMATIONS */
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translate3d(0, -12px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
       }
 
       .fade-in {
@@ -180,140 +294,6 @@
 
       .fade-in:nth-child(20) {
         animation-delay: calc(var(--base-animation-delay) + 19 * var(--animation-spacing));
-      }
-
-      @media screen and (max-width: 600px) {
-        .panel {
-          max-width: 100%;
-          width: 100%;
-        }
-      }
-
-      .thoughts {
-        display: block;
-        font-size: var(--small-font-size);
-        max-width: var(--max-width);
-      }
-
-      .full-width {
-        width: 100%;
-        max-width: var(--max-width);
-      }
-
-      .marquee-wrapper {
-        flex-shrink: 0;
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        height: 24px;
-      }
-
-      .marquee {
-        position: absolute;
-        left: 0;
-        right: 0;
-        display: inline-flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-        animation: marquee 20s linear infinite;
-      }
-
-      .marquee-delay {
-        animation: marquee-2 20s linear infinite;
-      }
-
-      @keyframes marquee {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-225%);
-        }
-      }
-
-      @keyframes marquee-2 {
-        0% {
-          transform: translateX(225%);
-        }
-        100% {
-          transform: translateX(0%);
-        }
-      }
-
-      .marquee span {
-        font-size: var(--small-font-size);
-        display: inline-block;
-        margin: 0;
-        margin-right: var(--spacing-0);
-        margin-bottom: var(--spacing-0);
-
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: var(--spacing-0) var(--spacing-1);
-        border-radius: var(--roundness);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        box-sizing: border-box;
-      }
-
-      .tags span {
-        font-size: var(--small-font-size);
-        display: inline-block;
-        margin: 0;
-        margin-right: calc(-1 * var(--spacing-2) + 4px);
-        margin-bottom: var(--spacing-0);
-
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: var(--spacing-0);
-        border-radius: var(--roundness);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        box-sizing: border-box;
-      }
-
-      .tags span:hover {
-        z-index: 999;
-        position: relative;
-      }
-
-      .two-column {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        max-width: var(--max-width);
-        gap: 6px;
-      }
-
-      .two-column div {
-        flex: 0.5;
-      }
-
-      .job-title {
-        margin-left: var(--spacing-5);
-      }
-
-      .heading {
-        margin-top: var(--spacing-4);
-        text-shadow: 0px 1px 5px rgba(0, 0, 0, 1);
-        color: white;
-        font-size: var(--header-font-size);
-      }
-
-      .heading.small {
-        margin-top: var(--spacing-1);
-        /* text-transform: uppercase; */
-        font-size: var(--small-header-font-size);
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translate3d(0, -12px, 0);
-        }
-        to {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-        }
       }
     </style>
     <script type="text/javascript">
@@ -422,6 +402,100 @@
         }
       }
       customElements.define("bf-link", Link)
+
+      class Marquee extends HTMLElement {
+        items = ""
+        static get observedAttributes() {
+          return ["items"]
+        }
+
+        attributeChangedCallback(property, oldValue, newValue) {
+          if (oldValue === newValue) return
+          this[property] = newValue
+        }
+
+        render() {
+          const items = this.items.split(",")
+          const lengthApproximationHack = this.items.length * 2.3 + 24;
+          this.shadow.innerHTML = `
+            <style>
+              .marquee-wrapper {
+                flex-shrink: 0;
+                overflow: hidden;
+                position: relative;
+                margin-left: calc(-1 *var(--spacing-2));
+                margin-right: calc(-1 *var(--spacing-2));
+                height: 24px;
+              }
+
+              .marquee {
+                position: absolute;
+                left: 0;
+                right: 0;
+                display: inline-flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                white-space: nowrap;
+                animation: marquee 20s linear infinite;
+              }
+
+              .marquee-delay {
+                animation: marquee-2 20s linear infinite;
+              }
+
+              @keyframes marquee {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(-${lengthApproximationHack}%);
+                }
+              }
+
+              @keyframes marquee-2 {
+                0% {
+                  transform: translateX(${lengthApproximationHack}%);
+                }
+                100% {
+                  transform: translateX(0%);
+                }
+              }
+
+              .marquee span {
+                font-size: var(--small-font-size);
+                display: inline-block;
+                margin: 0;
+                margin-right: var(--spacing-0);
+                margin-bottom: var(--spacing-0);
+
+                background-color: rgba(0, 0, 0, 0.2);
+                padding: var(--spacing-0) var(--spacing-1);
+                border-radius: var(--roundness);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                box-sizing: border-box;
+              }
+            </style>
+            <div class="full-width marquee-wrapper fade-in">
+              <div class="marquee">
+                ${items.map((item) => `<span class="glassy">${item}</span>`).join("")}
+              </div>
+              <div class="marquee marquee-delay">
+                ${items.map((item) => `<span class="glassy">${item}</span>`).join("")}
+              </div>
+            </div>`
+        }
+
+        constructor() {
+          super()
+          this.shadow = this.attachShadow({ mode: "open" })
+        }
+
+        connectedCallback() {
+          this.render()
+        }
+      }
+      customElements.define("bf-marquee", Marquee)
 
       class Icon extends HTMLElement {
         type = "none"
@@ -629,21 +703,26 @@
           </span>
         </p>
       </div>
+      <h1 class="heading fade-in">Focus</h1>
+      <bf-marquee class="full-width fade-in" items="video games,user interfaces,generative art,creative computing,education,mindfulness,psychology,consciousness"></bf-marquee>
+      <bf-marquee class="full-width fade-in" items="figma,unity3d,godot,touchdesigner,vim,git,rive,blender,aseprite,ableton,davinci resolve"></bf-marquee>
+      <bf-marquee class="full-width fade-in" items="typescript,react,clojure,solidjs,rust,swift,svelte,Next.js,F#,C#,HTML,CSS,webgl,three.js"></bf-marquee>
       <h1 class="heading fade-in">Now</h1>
       <div class="two-column fade-in">
         <div class="panel glassy">
-          <bf-link href="https://subconcious.network">
-            <bf-icon type="moon"></bf-icon>
+          <section class="role subconscious">
+          <bf-link href="https://subconscious.network/">
             Subconscious </bf-link
           ><br />
           <span class="job-title">App Developer</span>
+          </section>
         </div>
-        <div class="panel glassy">
+        <div class="panel glassy ">
+          <section class="role twopm">
           <bf-link href="https://twopm.studio">
-            <bf-icon type="move"></bf-icon>
             TwoPM Studios </bf-link
           ><br />
-          <span class="job-title">Lead Developer</span>
+          <span class="job-title">Lead Developer</span></section>
         </div>
       </div>
       <div class="two-column fade-in">
@@ -654,28 +733,31 @@
           </bf-link>
         </div>
         <div class="panel glassy small">
-          <bf-link href="https://store.steampowered.com/app/1274210/WizardChess/"> WizardChess </bf-highlight>
+          <bf-link href="https://store.steampowered.com/app/1274210/WizardChess/">
+            
+            <bf-icon type="move"></bf-icon>
+            WizardChess </bf-highlight>
         </div>
       </div>
       <h1 class="heading fade-in">Past</h1>
       <div class="full-width tags fade-in">
         <span class="glassy"><bf-link href="http://nats.io/">nats.io</bf-highlight></span>
-        <span class="glassy"><bf-link href="https://www.economicpossibility.org/">library of economic possibility</bf-highlight></span>
+        <span class="glassy"><bf-link href="https://www.economicpossibility.org/">LEP</bf-highlight></span>
         <span class="glassy"><bf-link href="https://zkga.me/">darkforest.eth</bf-highlight></span>
-        <span class="glassy"><bf-link href="https://www.connectdevelop.com/">connect develop</bf-highlight></span>
-        <span class="glassy"><bf-link href="https://www.locatrix.com/">locatrix</bf-highlight></span>
-        <span class="glassy"><bf-highlight>voltic games</bf-highlight></span>
-        <span class="glassy"><bf-link href="https://www.uq.edu.au/">the university of queensland</bf-highlight></span>
+        <span class="glassy"><bf-link href="https://www.connectdevelop.com/">Connect Develop</bf-highlight></span>
+        <span class="glassy"><bf-link href="https://www.locatrix.com/">Locatrix</bf-highlight></span>
+        <span class="glassy"><bf-highlight>Voltic Games</bf-highlight></span>
+        <span class="glassy"><bf-link href="https://www.uq.edu.au/">UQ</bf-highlight></span>
       </div>
-      <h1 class="small heading fade-in">Links</h1>
+      <h1 class="heading fade-in">Links</h1>
       <div class="full-width tags fade-in">
+        <span class="glassy"><bf-link target="new" href="https://cv.bf.wtf/">cv</bf-link></span>
         <span class="glassy"><bf-link target="new" href="https://twitter.com/vivavolt">twitter</bf-link></span>
         <span class="glassy"><bf-link target="new" href="https://github.com/bfollington">github</bf-link></span>
         <span class="glassy"><bf-link target="new" href="https://www.are.na/ben-follington">are.na</bf-link></span>
         <span class="glassy"
           ><bf-link target="new" href="https://www.youtube.com/@vivavolt/">youtube</bf-link></span
         >
-        <span class="glassy"><bf-link target="new" href="https://cv.bf.wtf/">cv</bf-link></span>
         <span class="glassy"><bf-link target="new" href="mailto:work@bf.wtf">email</bf-link></span>
         <span class="glassy"
           ><bf-link target="new" href="https://shimmeringvoid.substack.com/"
@@ -683,92 +765,8 @@
           ></span
         >
       </div>
-      <h1 class="heading small fade-in">Thinking About</h1>
-      <div class="full-width marquee-wrapper fade-in">
-        <div class="marquee">
-          <span class="glassy">video games</span>
-          <span class="glassy">user interfaces</span>
-          <span class="glassy">generative art</span>
-          <span class="glassy">creative computing</span>
-          <span class="glassy">education</span>
-          <span class="glassy">mindfulness</span>
-          <span class="glassy">experience design</span>
-        </div>
-        <div class="marquee marquee-delay ">
-          <span class="glassy">video games</span>
-          <span class="glassy">user interfaces</span>
-          <span class="glassy">generative art</span>
-          <span class="glassy">creative computing</span>
-          <span class="glassy">education</span>
-          <span class="glassy">mindfulness</span>
-          <span class="glassy">experience design</span>
-        </div>
+      <!-- <button class="glassy" type="button" id="motion">enable device motion</button> -->
       </div>
-      <h1 class="small heading fade-in">Tools</h1>
-      <div class="full-width marquee-wrapper fade-in">
-        <div class="marquee">
-          <span class="glassy">figma</span>
-          <span class="glassy">unity3d</span>
-          <span class="glassy">godot</span>
-          <span class="glassy">touchdesigner</span>
-          <span class="glassy">vim</span>
-          <span class="glassy">git</span>
-          <span class="glassy">rive</span>
-          <span class="glassy">blender</span>
-          <span class="glassy">aseprite</span>
-          <span class="glassy">ableton</span>
-          <span class="glassy">davinci resolve</span>
-        </div>
-        <div class="marquee marquee-delay ">
-          <span class="glassy">figma</span>
-          <span class="glassy">unity3d</span>
-          <span class="glassy">godot</span>
-          <span class="glassy">touchdesigner</span>
-          <span class="glassy">vim</span>
-          <span class="glassy">git</span>
-          <span class="glassy">rive</span>
-          <span class="glassy">blender</span>
-          <span class="glassy">aseprite</span>
-          <span class="glassy">ableton</span>
-          <span class="glassy">davinci resolve</span>
-        </div>
-      </div>
-      <h1 class="small heading fade-in">Tech</h1>
-      <div class="full-width marquee-wrapper fade-in">
-        <div class="marquee">
-          <span class="glassy">typescript</span>
-          <span class="glassy">react</span>
-          <span class="glassy">clojure</span>
-          <span class="glassy">solidjs</span>
-          <span class="glassy">rust</span>
-          <span class="glassy">swift</span>
-          <span class="glassy">svelte</span>
-          <span class="glassy">Next.js</span>
-          <span class="glassy">F#</span>
-          <span class="glassy">C#</span>
-          <span class="glassy">HTML</span>
-          <span class="glassy">CSS</span>
-          <span class="glassy">webgl</span>
-          <span class="glassy">three.js</span>
-        </div>
-        <div class="marquee marquee-delay">
-          <span class="glassy">typescript</span>
-          <span class="glassy">react</span>
-          <span class="glassy">clojure</span>
-          <span class="glassy">solidjs</span>
-          <span class="glassy">rust</span>
-          <span class="glassy">swift</span>
-          <span class="glassy">svelte</span>
-          <span class="glassy">Next.js</span>
-          <span class="glassy">F#</span>
-          <span class="glassy">C#</span>
-          <span class="glassy">HTML</span>
-          <span class="glassy">CSS</span>
-          <span class="glassy">webgl</span>
-          <span class="glassy">three.js</span>
-        </div>
-      </div>
-      <button class="glassy" type="button" id="motion">enable device motion</button>
     </div>
     <script src="background.js"></script>
   </body>
