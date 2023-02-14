@@ -439,16 +439,28 @@
 
         render() {
           const items = this.items.split(",")
-          const lengthApproximationHack = this.items.length * 2.3 + 24;
+          const lengthApproximationHack = this.items.length * 2 + 16;
+          const lengthApproximationHackMobile = this.items.length * 2.36 + 24;
+
           this.shadow.innerHTML = `
             <style>
               .marquee-wrapper {
                 flex-shrink: 0;
                 overflow: hidden;
                 position: relative;
-                margin-left: calc(-1 *var(--spacing-2));
-                margin-right: calc(-1 *var(--spacing-2));
+                margin-left: calc(-1 * var(--spacing-2));
+                margin-right: calc(-1 * var(--spacing-2));
                 height: 24px;
+
+                --length-approximation: ${lengthApproximationHack}%;
+                --negative-length-approximation: -${lengthApproximationHack}%;
+              }
+
+              @media screen and (max-width: 600px) {
+                .marquee-wrapper {
+                  --length-approximation: ${lengthApproximationHackMobile}%;
+                  --negative-length-approximation: -${lengthApproximationHackMobile}%;
+                }
               }
 
               .marquee {
@@ -471,13 +483,13 @@
                   transform: translateX(0);
                 }
                 100% {
-                  transform: translateX(-${lengthApproximationHack}%);
+                  transform: translateX(var(--negative-length-approximation));
                 }
               }
 
               @keyframes marquee-2 {
                 0% {
-                  transform: translateX(${lengthApproximationHack}%);
+                  transform: translateX(var(--length-approximation));
                 }
                 100% {
                   transform: translateX(0%);
