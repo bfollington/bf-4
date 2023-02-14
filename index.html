@@ -107,6 +107,11 @@
         background-position: 125% 24px;
       }
 
+      .pixel {
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+      }
+
       @media screen and (max-width: 600px) {
         .role {
           background-size: 75%;
@@ -135,8 +140,11 @@
         transform: scale(1.025);
       }
 
-      .panel.small {
+      .small {
         font-size: var(--small-font-size);
+      }
+
+      .panel.small {
         padding: var(--spacing-0);
       }
 
@@ -186,6 +194,11 @@
 
       .two-column div {
         flex: 0.5;
+      }
+
+      .project-link {
+        display: inline-block;
+        margin-top: var(--spacing-2);
       }
 
 
@@ -348,6 +361,10 @@
                 transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
               }
 
+              img {
+                vertical-align: middle;
+              }
+
               span:hover {
                 background-color: rgba(255, 255, 255, 0.8);
                 color: rgba(0, 0, 0, 0.8);
@@ -356,6 +373,10 @@
                 background-filter: invert(100%);
                 -webkit-background-filter: invert(100%);
                 box-shadow:0px 2px 5px 3px rgba(0,0,0,0.31);
+              }
+
+              span:hover img {
+                filter: invert(100%);
               }
             </style>
             <span><slot></slot></span>`
@@ -530,6 +551,11 @@
           switch (this.type) {
             case "none":
               body = ``
+              break
+            case "arrow":
+              body = `
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+              `
               break
             case "person":
               body = `
@@ -712,7 +738,7 @@
         <div class="panel glassy">
           <section class="role subconscious">
           <bf-link href="https://subconscious.network/">
-            Subconscious </bf-link
+            Subconscious <bf-icon type="arrow"></bf-icon></bf-link
           ><br />
           <span class="job-title">App Developer</span>
           </section>
@@ -720,26 +746,13 @@
         <div class="panel glassy ">
           <section class="role twopm">
           <bf-link href="https://twopm.studio">
-            TwoPM Studios </bf-link
+            TwoPM Studios <bf-icon type="arrow"></bf-icon></bf-link
           ><br />
-          <span class="job-title">Lead Developer</span></section>
+          <span class="job-title">Technical Director</span>
+        </section>
         </div>
       </div>
-      <div class="two-column fade-in">
-        <div class="panel glassy small">
-          <bf-link href="https://shimmeringvoid.substack.com">
-            <bf-icon type="moon"></bf-icon>
-            shimmeringvoid
-          </bf-link>
-        </div>
-        <div class="panel glassy small">
-          <bf-link href="https://store.steampowered.com/app/1274210/WizardChess/">
-            
-            <bf-icon type="move"></bf-icon>
-            WizardChess </bf-highlight>
-        </div>
-      </div>
-      <h1 class="heading fade-in">Focus</h1>
+      <h1 class="heading fade-in">Interests</h1>
       <bf-marquee class="full-width fade-in" items="video games,user interfaces,generative art,creative computing,education,mindfulness,psychology,consciousness"></bf-marquee>
       <bf-marquee class="full-width fade-in" items="figma,unity3d,godot,touchdesigner,vim,git,rive,blender,aseprite,ableton,davinci resolve"></bf-marquee>
       <bf-marquee class="full-width fade-in" items="typescript,react,clojure,solidjs,rust,swift,svelte,Next.js,F#,C#,HTML,CSS,webgl,three.js"></bf-marquee>
@@ -755,19 +768,20 @@
       </div>
       <h1 class="heading fade-in">Links</h1>
       <div class="full-width tags fade-in">
-        <span class="glassy"><bf-link target="new" href="https://cv.bf.wtf/">cv</bf-link></span>
-        <span class="glassy"><bf-link target="new" href="https://twitter.com/vivavolt">twitter</bf-link></span>
-        <span class="glassy"><bf-link target="new" href="https://github.com/bfollington">github</bf-link></span>
-        <span class="glassy"><bf-link target="new" href="https://www.are.na/ben-follington">are.na</bf-link></span>
-        <span class="glassy"
-          ><bf-link target="new" href="https://www.youtube.com/@vivavolt/">youtube</bf-link></span
-        >
-        <span class="glassy"><bf-link target="new" href="mailto:work@bf.wtf">email</bf-link></span>
+        <span class="glassy"><bf-link target="new" href="https://cv.bf.wtf/">CV</bf-link></span>
+        <span class="glassy"><bf-link target="new" href="https://twitter.com/vivavolt">Twitter</bf-link></span>
+        <span class="glassy"><bf-link target="new" href="https://github.com/bfollington">Github</bf-link></span>
+        <span class="glassy"><bf-link target="new" href="https://store.steampowered.com/app/1274210/WizardChess/">WizardChess</bf-link></span>
         <span class="glassy"
           ><bf-link target="new" href="https://shimmeringvoid.substack.com/"
-            >substack</bf-link
+            >Substack</bf-link
           ></span
         >
+        <span class="glassy"><bf-link target="new" href="https://www.are.na/ben-follington">Are.na</bf-link></span>
+        <span class="glassy"
+          ><bf-link target="new" href="https://www.youtube.com/@vivavolt/">Youtube</bf-link></span
+        >
+        <span class="glassy"><bf-link target="new" href="mailto:work@bf.wtf">Email</bf-link></span>
       </div>
       <!-- <button class="glassy" type="button" id="motion">enable device motion</button> -->
       </div>
