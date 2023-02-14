@@ -94,6 +94,9 @@
         background-size: 64%;
         background-repeat: no-repeat;
         transition: background-position 0.15s ease-out;
+        display: block;
+        text-decoration: none;
+        color: var(--fg-text);
       }
 
       .role.subconscious {
@@ -131,6 +134,7 @@
       }
 
       .panel {
+        display: block;
         padding: var(--spacing-1);
         max-width: var(--max-width);
         transition: transform 0.15s ease-out;
@@ -748,20 +752,20 @@
       <h1 class="heading fade-in">Now</h1>
       <div class="two-column fade-in">
         <div class="panel glassy">
-          <section class="role subconscious">
+          <a href="https://subconscious.network/" class="role subconscious">
           <bf-link href="https://subconscious.network/">
             Subconscious</bf-link
           ><br />
           <span class="job-title">App Developer</span>
-          </section>
+          </a>
         </div>
         <div class="panel glassy ">
-          <section class="role twopm">
+          <a href="https://twopm.studio" class="role twopm">
           <bf-link href="https://twopm.studio">
             TwoPM Studios</bf-link
           ><br />
           <span class="job-title">Technical Director</span>
-        </section>
+          </a>
         </div>
       </div>
       <h1 class="heading fade-in">Interests</h1>
